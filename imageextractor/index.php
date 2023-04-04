@@ -16,7 +16,6 @@
 		use League\ColorExtractor\ColorExtractor;
 		use League\ColorExtractor\Palette;
 
-		$palette = Palette::fromFilename('images/bricks.jpg');
 	?>
 
 	<header class="masthead">
@@ -32,11 +31,11 @@
 
 			<?php
 
-				$colors = $palette->getMostUsedColors(1024);
+				$palette = Palette::fromFilename('images/bricks.jpg');
 
-				foreach( $colors as $color => $count ) {
-					$current = Color::fromIntToHex($color);
-					echo '<li style="background-color:' . $current . '">' . $current . '</li>';
+				foreach($palette as $color => $count) {
+					// colors are represented by integers
+					echo Color::fromIntToHex($color), ': ', $count, "\n";
 				}
 
 			?>
